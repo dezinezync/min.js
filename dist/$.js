@@ -5,7 +5,18 @@ $ = (function (document, $) {
       forEach = 'forEach',
       trigger = 'trigger',
       each = [][forEach],
-      dummy = document.createElement();
+      dummy;
+      
+  try {
+  	dummy = document.createElement();
+  }
+  catch(exc) {
+  	if(exc) {
+  		//We have a valid exception from none other than, Firefox :/
+  		console.log("Stupid Firefox");
+  		dummy = document.createElement('undefined');
+  	}
+  }
 
   nodeList[forEach] = each;
 
